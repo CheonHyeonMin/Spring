@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	
+	<!-- 의존성주입 : 필요한 객체(Bean) 등록 -->
+	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
+      <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
+      <property name="jdbcUrl" value="jdbc:oracle:thin:@Localhost:1521:xe"/>
+      <property name="username" value="service"/>
+      <property name="password" value="12345"/>
+   </bean>
+   
+   
+</beans>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.smhrd.myapp.mapper.MemberMapper">
+   <insert id="join" parameterType="com.smhrd.model.WebMember">
+      insert into webmember values (#{email},#{pw},#{tel},#{address})
+   </insert>
+   <select id="login" parameterType="com.smhrd.model.WebMember" resultType="com.smhrd.model.WebMember">
+      select * from webmember where email=#{email} and pw=#{pw}
+   </select>
+   <update id="update" parameterType="com.smhrd.model.WebMember">
+      update webmember set pw=#{pw}, tel=#{tel}, address=#{address} where email=#{email}
+   </update>
+   <!-- 2개이상행을 가져올경우 -> list ,  -->
+   <select id="select" resultType="com.smhrd.model.WebMember">
+      select * from webmember
+   </select>
+   <!-- 값이 하나이고 자바에서 기본으로 제공하는 형태(기본타입, String) -> 타입 생략가능 -->
+   <delete id="delete" parameterType="String">
+      delete from webmember where email=#{email}
+   </delete>
+</mapper>

@@ -1,0 +1,11 @@
+package com.smhrd.myapp.mapper;
+
+import org.apache.ibatis.annotations.Mapper;
+
+@Mapper
+public interface MemberMapper {
+	public int join(WebMember) {
+		
+		return 1;
+	}
+}
