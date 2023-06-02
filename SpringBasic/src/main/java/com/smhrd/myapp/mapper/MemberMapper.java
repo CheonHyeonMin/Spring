@@ -3,6 +3,8 @@ package com.smhrd.myapp.mapper;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import com.smhrd.myapp.domain.WebMember;
 
@@ -18,10 +20,17 @@ public interface MemberMapper {
 	public List<WebMember> select();
 	
 	//삭제
-	public int delete(WebMember m);
+//	public int delete(WebMember m);
+	public int delete(String email);
 	
 	//수정
+//	public int update(WebMember m);
+	@Update("update webmember set pw=#{pw}, tel=#{tel}, address=#{address} where email=#{email}")
 	public int update(WebMember m);
+	
+	//이메일 중복체크
+	@Select("select count(*) from webmember where email=#{email}")
+	public int emailCheck(String email);
 }
 
 

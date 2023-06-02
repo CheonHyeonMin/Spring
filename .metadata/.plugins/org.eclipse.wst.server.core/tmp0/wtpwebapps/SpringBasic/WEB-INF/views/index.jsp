@@ -12,6 +12,7 @@
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 	</head>
 	<body>
+	<%request.setCharacterEncoding("UTF-8"); %>
 		<!-- Wrapper -->
 		<div id="wrapper">
 		<!-- Header -->
@@ -52,7 +53,9 @@
 			<ul class="actions vertical">
 				<li><h5>회원가입</h5></li>
 				<form action="member/join" method="post">
-					<li><input type="text" name="email" placeholder="Email을 입력하세요" ></li>
+					<li><input type="text" name="email" placeholder="Email을 입력하세요" id="input"></li>
+					<li><input type="button" value="email 중복체크" onclick="checkEmail()"></li>
+					<li><span id="result"></span></li>
 					<li><input type="password" name="pw" placeholder="PW를 입력하세요" ></li>
 					<li><input type="text" name="tel" placeholder="전화번호를 입력하세요" ></li>
 					<li><input type="text" name="address" placeholder="집주소를 입력하세요" ></li>
@@ -258,6 +261,36 @@
 			<script src="resources/assets/js/util.js"></script>
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="resources/assets/js/main.js"></script>
+			<script>
+				function checkEmail(){
+					//innerHTML : 태그사이의 html 요소 포함 가지고 오는 것, jquery는 html()
+					//html() -> 값 가지고 오기, html ("<h1>s<h1>") -> 값 추가하기
+					//innerText : 태그사이의 텍스트만 가지고 오는 것, jquery는 text()
+					//<input>
+					//value : input 태그에 작성된 값(사용자가 입력한(선택한) 값 가져오기)
+					let input = $("#input").val()
+					console.log(input)
+					//비동기 통신 : json{"key" : "value"}}, xml <>
+					$.ajax({
+						url : "member/emailcheck", //요청경로
+						type : "get", //http 요청 메서드(get-기본,post)
+						data : {'input' : input}, //"key" 아무렇게나 적어도 됨
+						success : function (res){
+							//res : 서버 응답값
+							console.log(res)
+							if(res=='success'){
+								$("#result").text('사용할 수 있는 이메일')	
+							}
+							else{//fail
+								$("result").text('사용할 수 없는 이메일')	
+							}
+						},
+						error :function (){
+							alert("통신 실패!")
+						}
+					})
+				}
+			</script>
 
 	</body>
 </html>

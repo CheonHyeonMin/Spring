@@ -16,11 +16,12 @@
 						<ul class="actions vertical">
 							<li><h5>회원정보수정</h5></li>
 								<form action="member/update" method="post">
+								<%-- <form action="member/update/${loginMember.email }" method="post"> --%>
 									 <li>접속한 Email : ${loginMember.email }</li>
-									  
+									  <%-- <input type="hidden" name="email" value="${loginMember.email}">  hidden 방법--%> 
 									<li><input type="password" placeholder="PW를 입력하세요" name="pw" value="${loginMember.pw }"style="width: 500px; margin: 0 auto;"></li>
-									<li><input type="text" placeholder="전화번호를 입력하세요" name="tel" value="${loginMember.pw }" style="width: 500px; margin: 0 auto;"></li>
-									<li><input type="text" placeholder="집주소를 입력하세요" name="address" value="${loginMember.pw }" style="width: 500px; margin: 0 auto;"></li>
+									<li><input type="text" placeholder="전화번호를 입력하세요" name="tel" value="${loginMember.tel }" style="width: 500px; margin: 0 auto;"></li>
+									<li><input type="text" placeholder="집주소를 입력하세요" name="address" value="${loginMember.address }" style="width: 500px; margin: 0 auto;"></li>
 									<li><input type="submit" value="Update" class="button fit" style="width: 500px; margin: 0 auto;"></li>
 								</form>
 						</ul>

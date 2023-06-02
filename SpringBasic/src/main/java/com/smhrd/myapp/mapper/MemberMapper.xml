@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.smhrd.myapp.mapper.MemberMapper">
-   <insert id="join" parameterType="com.smhrd.myapp.domain.WebMember">
+   <insert id="join" parameterType="WebMember">
       insert into webmember values (#{email},#{pw},#{tel},#{address})
    </insert>
    
-    <select id="login" parameterType="com.smhrd.myapp.domain.WebMember" resultType="com.smhrd.myapp.domain.WebMember">
+    <select id="login" parameterType="WebMember" resultType="WebMember">
       select * from webmember where email=#{email} and pw=#{pw}
    </select>
    
-   <select id="select" resultType="com.smhrd.myapp.domain.WebMember">
+   <select id="select" resultType="WebMember">
       select * from webmember
    </select>
    
-   <delete id="delete" parameterType="com.smhrd.myapp.domain.WebMember">
+   <delete id="delete" parameterType="String"> <!-- 값을 하나만 받을때는 파람타입 생략 가능 -->
       delete from webmember where email=#{email}
    </delete>
    
-   <update id="update" parameterType="com.smhrd.myapp.domain.WebMember">
+   <!-- <update id="update" parameterType="com.smhrd.myapp.domain.WebMember">
       update webmember set pw=#{pw}, tel=#{tel}, address=#{address} where email=#{email}
-   </update>
+   </update> -->
    
    <!-- <update id="update" parameterType="com.smhrd.model.WebMember">
       update webmember set pw=#{pw}, tel=#{tel}, address=#{address} where email=#{email}
