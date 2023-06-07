@@ -11,4 +11,5 @@
     <fullyQualifiedTypeName name="org.springframework.web.multipart.support.RequestPartServletServerHttpRequest"/>
     <fullyQualifiedTypeName name="org.apache.ibatis.annotations.Update"/>
     <fullyQualifiedTypeName name="javax.swing.plaf.synth.SynthOptionPaneUI"/>
+    <fullyQualifiedTypeName name="lombok.AllArgsConstructor"/>
 </qualifiedTypeNameHistroy>
